@@ -1,0 +1,4 @@
+machine imap.domain.com login personal@domain.com port 993 password pswd
+machine smtp.domain.com login personal@domain.com port 587 password pswd
+machine imap.domain.com login work@domain.com port 993 password pswd
+machine smtp.domain.com login work@domain.com port 587 password pswd

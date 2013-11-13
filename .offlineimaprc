@@ -1,0 +1,44 @@
+[general]
+accounts = Personal, Work
+maxsyncaccounts = 3
+pythonfile = ~/.offlineimap.py
+
+[Account Personal]
+localrepository = Local
+remoterepository = Remote
+
+[Repository Local]
+type = Maildir
+localfolders = ~/Maildir/Personal
+
+[Repository Remote]
+type = IMAP
+remoteuser = personal@domain.com
+remotepasseval = get_password_emacs("imap.domain.com", "personal@domain.com", "993")
+realdelete = yes
+
+folderfilter = lambda foldername: foldername not in ['[Domain]/Spam', '[Domain]/All Mail', '[Domain]/Starred', '[Domain]/Important']
+
+holdconnectionopen = true
+keepalive = 60
+sslcacertfile = /usr/local/opt/curl-ca-bundle/share/ca-bundle.crt
+
+[Account Work]
+localrepository = WorkLocal
+remoterepository = WorkRemote
+
+[Repository WorkLocal]
+type = Maildir
+localfolders = ~/Maildir/Work
+
+[Repository WorkRemote]
+type = IMAP
+remoteuser = work@domain.com
+remotepasseval = get_password_emacs("imap.domain.com", "work@domain.com", "993")
+realdelete = yes
+
+folderfilter = lambda foldername: foldername not in ['[Domain]/Spam', '[Domain]/All Mail', '[Domain]/Starred', '[Domain]/Important']
+
+holdconnectionopen = true
+keepalive = 60
+sslcacertfile = /usr/local/opt/curl-ca-bundle/share/ca-bundle.crt
